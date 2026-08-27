@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Яблоко — Магазин техники Apple</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- ШАПКА -->
+      <header id="header">
+        <div class="logo">
+          <svg
+            class="logo-icon"
+            width="40"
+            height="48"
+            viewBox="0 0 40 48"
+            fill="none"
+          >
+            <polygon
+              points="20,4 36,14 36,34 20,44 4,34 4,14"
+              stroke="#1A1A1A"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <polygon
+              points="20,4 36,14 20,24 4,14"
+              stroke="#1A1A1A"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path d="M14 8 L19 4 L25 10 L20 14 L14 8 Z" fill="#1A1A1A" />
+            <path d="M16 6 L20 4 L22 8 L18 10 L16 6 Z" fill="#EF3124" />
+            <line
+              x1="20"
+              y1="24"
+              x2="36"
+              y2="34"
+              stroke="#EF3124"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="logo-text">Яблоко</span>
+        </div>
+
+        <div class="header-actions">
+          <button class="header-btn" id="cartBtn">
+            🛒 <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="header-btn" id="adminBtn">⚙️</button>
+        </div>
+      </header>
+
+      <!-- КАТАЛОГ -->
+      <nav id="catalogNav">
+        <div class="catalog-dropdown">
+          <button class="catalog-btn" id="catalogToggle">
+            📂 Каталог товаров ▼
+          </button>
+          <ul class="catalog-menu" id="catalogMenu">
+            <li data-category="all" class="active">📱 Все товары</li>
+            <li data-category="iphone">📱 iPhone</li>
+            <li data-category="ipad">📟 iPad</li>
+            <li data-category="watch">⌚️ Apple Watch</li>
+            <li data-category="airpods">🎧 AirPods</li>
+            <li data-category="macbook">💻 MacBook</li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- ТОВАРЫ -->
+      <section id="products"></section>
+
+      <!-- КОРЗИНА -->
+      <div class="modal-overlay" id="cartModal">
+        <div class="modal modal-cart">
+          <button class="modal-close" id="closeCartBtn">✕</button>
+          <h2 class="modal-title">🛒 <span>Корзина</span></h2>
+          <div id="cartItems"></div>
+          <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
+          <div class="modal-actions">
+            <button class="btn-checkout" id="checkoutBtn">
+              Оформить заказ
+            </button>
+            <button class="cancel-btn" id="clearCartBtn">Очистить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

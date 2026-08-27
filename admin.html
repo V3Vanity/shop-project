@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Админ-панель — Яблоко</title>
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <div id="adminApp">
+      <header id="adminHeader">
+        <div class="logo">
+          <svg
+            class="logo-icon"
+            width="40"
+            height="48"
+            viewBox="0 0 40 48"
+            fill="none"
+          >
+            <polygon
+              points="20,4 36,14 36,34 20,44 4,34 4,14"
+              stroke="#1A1A1A"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <polygon
+              points="20,4 36,14 20,24 4,14"
+              stroke="#1A1A1A"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path d="M14 8 L19 4 L25 10 L20 14 L14 8 Z" fill="#1A1A1A" />
+            <path d="M16 6 L20 4 L22 8 L18 10 L16 6 Z" fill="#EF3124" />
+            <line
+              x1="20"
+              y1="24"
+              x2="36"
+              y2="34"
+              stroke="#EF3124"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="logo-text">Яблоко</span>
+          <span class="logo-badge">Админ</span>
+        </div>
+        <div class="header-actions">
+          <button class="header-btn" id="backToShopBtn">🏪 Магазин</button>
+        </div>
+      </header>
+
+      <section id="adminPanel">
+        <div class="admin-actions">
+          <button class="btn-add" data-modal="addModal" data-action="open">
+            ➕ Добавить товар
+          </button>
+        </div>
+        <div id="adminProductList"></div>
+      </section>
+    </div>
+
+    <!-- МОДАЛКА ДОБАВЛЕНИЯ -->
+    <div class="modal-overlay" id="addModal">
+      <div class="modal modal-add">
+        <button class="modal-close" data-modal="addModal" data-action="close">
+          ✕
+        </button>
+        <h2 class="modal-title"><span>Добавить товар</span></h2>
+        <form id="addProductForm">
+          <div class="form-group">
+            <label for="productName">Название</label>
+            <input
+              type="text"
+              id="productName"
+              placeholder="iPhone 17 Pro Max"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="productCategory">Категория</label>
+            <select id="productCategory" required>
+              <option value="">Выберите</option>
+              <option value="iphone">📱 iPhone</option>
+              <option value="ipad">📟 iPad</option>
+              <option value="watch">⌚️ Apple Watch</option>
+              <option value="airpods">🎧 AirPods</option>
+              <option value="macbook">💻 MacBook</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Основное изображение</label>
+            <input type="file" id="productImage" accept="image/*" />
+            <div id="imagePreview"></div>
+          </div>
+
+          <div class="variants-section">
+            <h3 class="variants-title">📦 Варианты товара</h3>
+            <div id="variantsContainer"></div>
+            <button type="button" class="btn-add-variant" id="addVariantBtn">
+              ➕ Добавить вариант
+            </button>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="save-btn">💾 Добавить</button>
+            <button
+              type="button"
+              class="cancel-btn"
+              data-modal="addModal"
+              data-action="close"
+            >
+              ❌ Отмена
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- МОДАЛКА РЕДАКТИРОВАНИЯ -->
+    <div class="modal-overlay" id="editModal">
+      <div class="modal modal-edit">
+        <button class="modal-close" data-modal="editModal" data-action="close">
+          ✕
+        </button>
+        <h2 class="modal-title">✏️ <span>Редактировать</span></h2>
+        <form id="editProductForm">
+          <div class="form-group">
+            <label for="editProductName">Название</label>
+            <input type="text" id="editProductName" required />
+          </div>
+          <div class="form-group">
+            <label for="editProductCategory">Категория</label>
+            <select id="editProductCategory" required>
+              <option value="iphone">📱 iPhone</option>
+              <option value="ipad">📟 iPad</option>
+              <option value="watch">⌚️ Apple Watch</option>
+              <option value="airpods">🎧 AirPods</option>
+              <option value="macbook">💻 MacBook</option>
+            </select>
+          </div>
+
+          <div class="variants-section">
+            <h3 class="variants-title">📦 Варианты товара</h3>
+            <div id="editVariantsContainer"></div>
+            <button
+              type="button"
+              class="btn-add-variant"
+              id="editAddVariantBtn"
+            >
+              ➕ Добавить вариант
+            </button>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="save-btn">💾 Сохранить</button>
+            <button
+              type="button"
+              class="cancel-btn"
+              data-modal="editModal"
+              data-action="close"
+            >
+              ❌ Отмена
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+  </body>
+</html>
